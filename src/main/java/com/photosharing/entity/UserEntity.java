@@ -63,7 +63,7 @@ public class UserEntity {
 	@OneToMany(mappedBy = "receiver")
 	private List<NotificationEntity> receivedNotifications = new ArrayList<>();
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_photo", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "photo_id"))
 	private List<PhotoEntity> likedPhotos = new ArrayList<>();
 

@@ -33,8 +33,7 @@ public interface PhotoRepository extends JpaRepository<PhotoEntity, Long> {
 	
 //	@Query(value = "SELECT u.likedPhotos FROM UserEntity u WHERE u.id = :userid")
 	
-//	@Query(value = "SELECT photo.* FROM photo WHERE photo.id in (SELECT user_photo.photo_id FROM user_photo WHERE user_photo.user_id = :userid)", 
-//			nativeQuery = true)
-	@Query(value = "SELECT u.likedPhotos FROM UserEntity u WHERE u.id = :userid")
+	@Query(value = "SELECT * FROM photo WHERE id in (SELECT photo_id FROM user_photo WHERE user_id = :userid)", 
+			nativeQuery = true)
 	Page<PhotoEntity> findAllLikedPhotoByUserId(Pageable pageable, @Param("userid") Long userid);
 }
